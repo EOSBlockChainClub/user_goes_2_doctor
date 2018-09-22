@@ -23,7 +23,6 @@ class DeriveData extends React.Component {
             label="Scan"
             raised
             primary
-            onClick={this.testButtonOnClick}
           >
             Scan
           </WrappedLink>

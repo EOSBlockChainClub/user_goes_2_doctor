@@ -14,12 +14,18 @@ import * as paths from './paths';
 
 import MedicalInformation from './MedicalInformation';
 import DeriveData from './DeriveData';
+import Encrypt from './Encrypt';
+import WrappedLink from './WrappedLink';
 
-const Code = () => <div>Code</div>;
+const Scan = () => (
+  <center>
+    <WrappedLink to={paths.ENCRYPT_PATH} label="Encrypt" raised primary>
+      Encrypt
+    </WrappedLink>
+  </center>
+);
 
-const Contact = () => <div>Contact</div>;
-
-const info = () => <div>info</div>;
+const Publish = () => <div>Publishing encrypted data to the blockchain...</div>;
 
 class App extends Component {
   state = {
@@ -45,17 +51,15 @@ class App extends Component {
               <Route
                 exact
                 path={paths.DERIVE_DATA_PATH}
-                render={() => (
-                  <DeriveData {...this.state.medicalInformation} />
-                )}
+                render={() => <DeriveData {...this.state.medicalInformation} />}
               />
               <Route
                 exact
                 path={paths.SCAN_MASTER_PASSWORD_PATH}
-                component={Code}
+                component={Scan}
               />
-              <Route exact path={paths.ENCRYPT_PATH} component={Contact} />
-              <Route exact path={paths.PUBLISH_PATH} component={info} />
+              <Route exact path={paths.ENCRYPT_PATH} component={Encrypt} />
+              <Route exact path={paths.PUBLISH_PATH} component={Publish} />
             </div>
           </div>
         </Router>

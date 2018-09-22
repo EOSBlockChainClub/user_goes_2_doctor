@@ -18,7 +18,6 @@ class MedicalInformation extends React.Component {
             label="Derive Data"
             raised
             primary
-            onClick={this.testButtonOnClick}
           >
             Derive Data
           </WrappedLink>
