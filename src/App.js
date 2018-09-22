@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import './assets/react-toolbox/theme.css';
 import theme from './assets/react-toolbox/theme.js';
@@ -25,7 +24,9 @@ const Scan = () => (
   </center>
 );
 
-const Publish = () => <div>Publishing encrypted data to the blockchain...</div>;
+const Publish = () => (
+  <center>Publishing encrypted data to the blockchain...</center>
+);
 
 class App extends Component {
   state = {

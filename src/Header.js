@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import * as paths from './paths';
 import './Header.css';
@@ -56,20 +56,6 @@ class Header extends React.Component {
         </ul>
       </div>
     );
-    switch (this.props.location.pathname) {
-      case paths.MEDICAL_INFORMATION_PATH:
-        return <header className="App-header" />;
-      case paths.DERIVE_DATA_PATH:
-        return <header className="App-header" />;
-      case paths.SCAN_MASTER_PASSWORD_PATH:
-        return <header className="App-header" />;
-      case paths.ENCRYPT_PATH:
-        return <header className="App-header" />;
-      case paths.PUBLISH_PATH:
-        return <header className="App-header" />;
-      default:
-        return null;
-    }
   }
 }
 
