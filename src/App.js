@@ -4,7 +4,7 @@ import './App.css';
 import './assets/react-toolbox/theme.css';
 import theme from './assets/react-toolbox/theme.js';
 import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
-
+import Scan from './Scan.js';
 import Header from './Header';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -52,7 +52,7 @@ class App extends Component {
               <Route
                 exact
                 path={paths.SCAN_MASTER_PASSWORD_PATH}
-                component={Code}
+                component={Scan}
               />
               <Route exact path={paths.ENCRYPT_PATH} component={Contact} />
               <Route exact path={paths.PUBLISH_PATH} component={info} />
