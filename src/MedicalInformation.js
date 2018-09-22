@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import WrappedLink from './WrappedLink';
 import * as paths from './paths';
 class MedicalInformation extends React.Component {
   render() {
-    console.log({ props: this.props });
     return (
       <div>
         <div>Medical Information</div>

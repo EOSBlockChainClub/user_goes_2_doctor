@@ -1,15 +1,17 @@
-export canDrive = (medicalInformation) => {
+const canDrive = medicalInformation => {
   return true;
-}
-export canFly = (medicalInformation) => {
+};
+const canFly = medicalInformation => {
   return false;
-}
-export canInsurance = (medicalInformation) => {
+};
+const canInsurance = medicalInformation => {
   return true;
-}
-export canGym = (medicalInformation) => {
+};
+const canGym = medicalInformation => {
   return true;
-}
-export canMarathon = (medicalInformation) => {
+};
+const canMarathon = medicalInformation => {
   return false;
-}
+};
+
+export { canDrive, canFly, canInsurance, canGym, canMarathon };
