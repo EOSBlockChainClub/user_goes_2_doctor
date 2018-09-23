@@ -48,7 +48,7 @@ class App extends Component {
             <AppBar>
               <Toolbar>
                 <Typography variant="title" color="inherit">
-                  Fuzzy Certification
+                  EOS ID Certification
                 </Typography>
               </Toolbar>
             </AppBar>
