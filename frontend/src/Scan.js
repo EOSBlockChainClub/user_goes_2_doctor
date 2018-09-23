@@ -65,12 +65,14 @@ export default class Scan extends Component {
       <div>
         <div>
           {!this.state.killCamera && (
+            <div style={{margin: '0 auto', width: 400}}>
             <QrReader
               delay={this.state.delay}
               onError={this.handleError}
               onScan={this.handleScan}
               style={{ width: '100%' }}
             />
+          </div>
           )}
           {this.state.displayData && <p>Deterministic password derivation:</p>}
           {this.state.displayData &&
