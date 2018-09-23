@@ -12,29 +12,15 @@ import * as paths from './paths';
 //import TimePicker from 'react-toolbox/lib/time_picker/TimePicker';
 
 import InformationRequest from './InformationRequest';
-import DeriveData from './DeriveData';
-import Encrypt from './Encrypt';
-import Publish from './Publish';
+import Verify from './Verify';
 
 class App extends Component {
   state = {
-    medicalInformation: {
-      name: 'Name',
-      heartRate: 60,
-      bloodPressure: 140,
-      sugarLevel: 5.4,
-      sodium: 135,
-      ionizedCalcium: 1.03,
-      transferrin: 400,
-      ferritin: 800,
-      cholesterol: 0.9
-    },
-    masterPassword: null,
-    keys: null
+    key: null
   };
 
-  onKeysExtracted = keys => {
-    this.setState({ keys });
+  onKeysExtracted = key => {
+    this.setState({ key });
   };
 
   render() {
@@ -47,31 +33,15 @@ class App extends Component {
             <div>
               <Route
                 exact
-                path={paths.MEDICAL_INFORMATION_PATH}
+                path={paths.INFORMATION_REQUEST_PATH}
                 render={() => (
-                  <MedicalInformation {...this.state.medicalInformation} />
+                  <InformationRequest {...this.state.key} />
                 )}
               />
               <Route
                 exact
-                path={paths.DERIVE_DATA_PATH}
-                render={() => <DeriveData {...this.state.medicalInformation} />}
-              />
-              <Route
-                exact
-                path={paths.SCAN_MASTER_PASSWORD_PATH}
-                render={() => <Scan onKeysExtracted={this.onKeysExtracted} />}
-              />
-              <Route exact path={paths.ENCRYPT_PATH} component={Encrypt} />
-              <Route
-                exact
-                path={paths.PUBLISH_PATH}
-                render={() => (
-                  <Publish
-                    keys={this.state.keys}
-                    medicalInformation={this.state.medicalInformation}
-                  />
-                )}
+                path={paths.VERIFY_PATH}
+                render={() => <Verify {...this.state.key} />}
               />
             </div>
           </div>

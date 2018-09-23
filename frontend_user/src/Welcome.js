@@ -3,24 +3,28 @@ import WrappedLink from './WrappedLink';
 import * as paths from './paths';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import * as verify from './verifyFunctions'
-class InformationRequest extends React.Component {
+class Welcome extends React.Component {
   render() {
     return (
       <div>
-        <div>YourGym needs certificate for</div>
-        <div>
-        Is the subject in good condition to exercise?            
-        </div>
+        <div>Your Data Manager</div>      
         
         <center>
           <WrappedLink
-            to={paths.VERIFY_PATH}
-            label="Verify Certificate"
+            to={paths.MASTER_PASSWORD_PATH}
+            label="Retrieve Data"
             raised
             primary
           >
-            Verify Certificate
+            Retrieve Data
+          </WrappedLink>
+          <WrappedLink
+            to={paths.SCAN_VERIFY_REQUEST_PATH}
+            label="Provide Data"
+            raised
+            primary
+          >
+            Provide Data
           </WrappedLink>
         </center>
       </div>
@@ -28,4 +32,4 @@ class InformationRequest extends React.Component {
   }
 }
 
-export default InformationRequest;
+export default Welcome;

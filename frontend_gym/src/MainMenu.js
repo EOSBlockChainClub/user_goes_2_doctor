@@ -8,7 +8,7 @@ const MainMenu = () => {
       <WrappedLink to="/">{'home'}</WrappedLink>
       <WrappedLink to="/about">{'About'}</WrappedLink>
       <WrappedLink to="/code">{'code'}</WrappedLink>
-      <WrappedLink to="/code">{'contact'}</WrappedLink>
+      <WrappedLink to="/contact">{'contact'}</WrappedLink>
       <WrappedLink to="/info">{'info'}</WrappedLink>
     </div>
   );

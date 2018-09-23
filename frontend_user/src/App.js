@@ -3,7 +3,6 @@ import './App.css';
 import './assets/react-toolbox/theme.css';
 import theme from './assets/react-toolbox/theme.js';
 import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
-import Scan from './Scan.js';
 import Header from './Header';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -11,30 +10,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import * as paths from './paths';
 //import TimePicker from 'react-toolbox/lib/time_picker/TimePicker';
 
-import MedicalInformation from './MedicalInformation';
-import DeriveData from './DeriveData';
-import Encrypt from './Encrypt';
-import Publish from './Publish';
+import Welcome from './Welcome';
+import MasterPassword from './MasterPassword';
+import ScanVerifyClaim from './ScanVerifyClaim';
 
 class App extends Component {
   state = {
-    medicalInformation: {
-      name: 'Name',
-      heartRate: 60,
-      bloodPressure: 140,
-      sugarLevel: 5.4,
-      sodium: 135,
-      ionizedCalcium: 1.03,
-      transferrin: 400,
-      ferritin: 800,
-      cholesterol: 0.9
-    },
-    masterPassword: null,
-    keys: null
-  };
-
-  onKeysExtracted = keys => {
-    this.setState({ keys });
   };
 
   render() {
@@ -47,32 +28,21 @@ class App extends Component {
             <div>
               <Route
                 exact
-                path={paths.MEDICAL_INFORMATION_PATH}
+                path={paths.WELCOME_PATH}
                 render={() => (
-                  <MedicalInformation {...this.state.medicalInformation} />
+                  <Welcome />
                 )}
               />
               <Route
                 exact
-                path={paths.DERIVE_DATA_PATH}
-                render={() => <DeriveData {...this.state.medicalInformation} />}
+                path={paths.MASTER_PASSWORD_PATH}
+                render={() => <MasterPassword />}
               />
               <Route
                 exact
-                path={paths.SCAN_MASTER_PASSWORD_PATH}
-                render={() => <Scan onKeysExtracted={this.onKeysExtracted} />}
-              />
-              <Route exact path={paths.ENCRYPT_PATH} component={Encrypt} />
-              <Route
-                exact
-                path={paths.PUBLISH_PATH}
-                render={() => (
-                  <Publish
-                    keys={this.state.keys}
-                    medicalInformation={this.state.medicalInformation}
-                  />
-                )}
-              />
+                path={paths.SCAN_VERIFY_REQUEST_PATH}
+                render={() => <ScanVerifyClaim onRequestExtracted={this.onRequestExtracted} />}
+              />              
             </div>
           </div>
         </Router>

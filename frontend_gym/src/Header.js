@@ -10,49 +10,22 @@ class Header extends React.Component {
         <ul className="header_progressbar">
           <li
             className={
-              paths.MEDICAL_INFORMATION_PATH === this.props.location.pathname
+              paths.INFORMATION_REQUEST_PATH === this.props.location.pathname
                 ? 'header_active'
                 : ''
             }
           >
-            Medical<br />information
-          </li>
+            Information<br />Request
+          </li>          
           <li
             className={
-              paths.DERIVE_DATA_PATH === this.props.location.pathname
+              paths.VERIFY_PATH === this.props.location.pathname
                 ? 'header_active'
                 : ''
             }
           >
-            Derive<br />data
-          </li>
-          <li
-            className={
-              paths.SCAN_MASTER_PASSWORD_PATH === this.props.location.pathname
-                ? 'header_active'
-                : ''
-            }
-          >
-            Scan master<br />password
-          </li>
-          <li
-            className={
-              paths.ENCRYPT_PATH === this.props.location.pathname
-                ? 'header_active'
-                : ''
-            }
-          >
-            Encrypt
-          </li>
-          <li
-            className={
-              paths.PUBLISH_PATH === this.props.location.pathname
-                ? 'header_active'
-                : ''
-            }
-          >
-            Publish
-          </li>
+            Verify
+          </li>      
         </ul>
       </div>
     );

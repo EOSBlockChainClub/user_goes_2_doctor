@@ -3,29 +3,25 @@ import WrappedLink from './WrappedLink';
 import * as paths from './paths';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import * as verify from './verifyFunctions'
-class InformationRequest extends React.Component {
+class ScanVerifyClaim extends React.Component {
   render() {
     return (
       <div>
-        <div>YourGym needs certificate for</div>
-        <div>
-        Is the subject in good condition to exercise?            
-        </div>
+        <div>Provide Data</div>      
         
         <center>
           <WrappedLink
-            to={paths.VERIFY_PATH}
-            label="Verify Certificate"
+            to={paths.WELCOME_PATH}
+            label="Back"
             raised
             primary
           >
-            Verify Certificate
+            Back
           </WrappedLink>
-        </center>
+        </center>        
       </div>
     );
   }
 }
 
-export default InformationRequest;
+export default ScanVerifyClaim;
