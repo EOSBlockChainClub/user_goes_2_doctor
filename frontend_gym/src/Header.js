@@ -7,7 +7,6 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        <center>Gym</center>
         <div className="header_container">
           <ul className="header_progressbar">
             <li
