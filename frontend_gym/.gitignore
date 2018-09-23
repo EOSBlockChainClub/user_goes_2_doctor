@@ -1,22 +1,13 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-node_modules/
+/node_modules
 
 # testing
 /coverage
 
 # production
-frontend/build
-build
-
-#compile contract files
-**/*.abi
-**/*.wasm
-**/*.wast
-
-#blockchain data
-**/data/*
-
+/build
 
 # misc
 .DS_Store
