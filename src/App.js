@@ -5,6 +5,9 @@ import theme from './assets/react-toolbox/theme.js';
 import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
 import Scan from './Scan.js';
 import Header from './Header';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -42,6 +45,13 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <Router>
           <div className="App">
+            <AppBar>
+              <Toolbar>
+                <Typography variant="title" color="inherit">
+                  Fuzzy Certification
+                </Typography>
+              </Toolbar>
+            </AppBar>
             <Header />
 
             <div>
