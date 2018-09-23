@@ -21,7 +21,9 @@ export default class Publish extends Component {
     let eos = Eos({
       keyProvider: DOCTORS_KEY, // private key
       httpEndpoint: HTTP_CHAIN_API_ENDPOINT,
-      chainId: CHAIN_ID
+      chainId: CHAIN_ID,
+      authorization: DOCTORS_ACCOUNT_NAME + '@active',
+
     });
 
     const encryptedGym = encrypt(
@@ -44,8 +46,6 @@ export default class Publish extends Component {
       const response = await rawResponse.json();
       const hash = response.hash;
       const locationStorage = response.location;
-
-      console.log({ hash, locationStorage });
 
       eos
         .contract(CONTRACT)
