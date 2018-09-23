@@ -14,11 +14,17 @@ import Welcome from './Welcome';
 import MasterPassword from './MasterPassword';
 import ScanVerifyClaim from './ScanVerifyClaim';
 import ProvideClaim from './ProvideClaim'
+import ScanLocation from './ScanLocation'
 
 class App extends Component {
   state = {
-    claims : []
+    claims : [],
+    locations: [],
   };
+
+  onLocationsReceived(locations) {
+    this.setState({locations:locations})
+  }
 
   render() {
     return (
@@ -36,14 +42,18 @@ class App extends Component {
               <Route
                 exact
                 path={paths.MASTER_PASSWORD_PATH}
-                render={() => <MasterPassword masterSecret="This is very secret" 
-                onClaimsReceived={this.onClaimsReceived}
+                render={() => <MasterPassword masterSecret="This is very secret"                 
                 />}
               />
               <Route
                 exact
+                path={paths.SCAN_LOCATION_PATH}
+                render={() => <ScanLocation onLocationsReceived={this.onLocationsReceived}/>}
+              />
+              <Route
+                exact
                 path={paths.SCAN_VERIFY_REQUEST_PATH}
-                render={() => <ScanVerifyClaim onRequestExtracted={this.onRequestExtracted} />}
+                render={() => <ScanVerifyClaim />}
               />              
               <Route
                 exact

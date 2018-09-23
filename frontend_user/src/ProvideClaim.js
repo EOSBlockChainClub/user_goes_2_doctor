@@ -44,13 +44,14 @@ class ProvideClaim extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          </div>      
-              
+        <center> Provide Verifiable Data
+        </center>   
+        <br/>                 
           {this.state.displayData && 
           (<center>{this.renderQrCode(this.state.keys[this.props.informationRequest], this.props.claims[this.props.informationRequest])}</center>)
           }
         <center>
+          <br/>
           <WrappedLink
             to={paths.WELCOME_PATH}
             label="Back"
