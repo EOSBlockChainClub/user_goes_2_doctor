@@ -39,8 +39,9 @@ export default class Scan extends Component {
 
   generatePubKey(secret) {
     var wif = ecc.seedPrivate(secret);
-    var pubkey = ecc.privateToPublic(wif);
-    return pubkey;
+    return wif;
+    //var pubkey = ecc.privateToPublic(wif);
+    //return pubkey;
   }
 
   generateSequence(secret) {
@@ -48,8 +49,8 @@ export default class Scan extends Component {
     var stuff = secret;
     for (var x = 0; x < 5; x++) {
       stuff = ecc.sha256(stuff);
-      var pubkey = this.generatePubKey(stuff);
-      this.state.keys.push(pubkey);
+      var privatekey = this.generatePubKey(stuff);
+      this.state.keys.push(privatekey);
     }
     this.props.onKeysExtracted(this.state.keys);
     this.setState({ displayData: true });

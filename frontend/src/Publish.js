@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as deriveDataComputation from './deriveDataComputation';
+import ecc from 'eosjs-ecc';
 let Eos = require('eosjs');
 
 const DOCTORS_KEY = '5K7mtrinTFrVTduSxizUc5hjXJEtTjVTsqSHeBHes1Viep86FP5';
@@ -10,7 +11,8 @@ const HTTP_STORAGE_API_ENDPOINT = 'http://localhost:4000/fuzzy/storage';
 const CONTRACT = 'fuzzchainacc';
 
 function encrypt(key, input) {
-  return input.toString();
+  return ecc.encrypt(key, ecc.privateToPublic(key), input.toString());
+  //return input.toString();
 }
 function sign(key, input) {
   return input;
