@@ -26,6 +26,7 @@ export default class Scan extends Component {
     this.handleScan = this.handleScan.bind(this);
     this.handleData = this.handleData.bind(this);
   }
+
   handleScan(data) {
     if (data) {
       this.setState({
@@ -36,9 +37,17 @@ export default class Scan extends Component {
     }
   }
 
+  parseClaim(data) {
+    return {
+      location:"571bd1853c22393131e2dcadce86894da714ec14968895c8b7ed18154b2be8cd",
+      key:"",
+      hash:"b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+    };
+  }
+
   async handleData(data) {
     console.log('handling Data ' + data);
-    const claim = JSON.parse(data);
+    const claim = this.parseClaim(data);
     console.log('handling Data ' + claim);
     const rawResponseStorage = await fetch(HTTP_STORAGE_API_ENDPOINT + claim.location, {
       method: 'GET',
@@ -71,7 +80,7 @@ export default class Scan extends Component {
         this.setState({displayData:true, verifyResult:false});
       }
     } else {
-      this.setState({displayError:true, error:Error("Invalid User")});
+      this.setState({displayError:true, error:Error("Invalid Data")});
     }
   }
 

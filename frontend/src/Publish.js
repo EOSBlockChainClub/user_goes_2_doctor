@@ -17,13 +17,18 @@ function sign(key, input) {
 }
 
 export default class Publish extends Component {
+  state = {
+    location:"",
+    hash:"",
+    showQRCode: false
+  }
+
   componentDidMount() {
     let eos = Eos({
       keyProvider: DOCTORS_KEY, // private key
       httpEndpoint: HTTP_CHAIN_API_ENDPOINT,
       chainId: CHAIN_ID,
       authorization: DOCTORS_ACCOUNT_NAME + '@active',
-
     });
 
     const encryptedGym = encrypt(
@@ -45,14 +50,15 @@ export default class Publish extends Component {
       });
       const response = await rawResponse.json();
       const hash = response.hash;
-      const locationStorage = response.location;
+      const location = response.location;
 
       eos
         .contract(CONTRACT)
         .then(myaccount => {
-          const result = myaccount.publishdata(DOCTORS_ACCOUNT_NAME, hash, locationStorage);
+          const result = myaccount.publishdata(DOCTORS_ACCOUNT_NAME, hash, location);
           result.then((r) => {
             console.log(r)
+            this.setState({hash, location, showQRCode:true});
           })
          
         });
@@ -60,6 +66,14 @@ export default class Publish extends Component {
   }
 
   render() {
-    return <center>Publishing encrypted data to the blockchain...</center>;
+    return <div>
+    <center>
+    {!this.state.showQRCode && (
+      Publishing encrypted data to the blockchain...)
+    {this.state.showQRCode && (
+      <img src="images/qr-code.png"/>
+    )}
+    </center>
+    </div>;
   }
 }
