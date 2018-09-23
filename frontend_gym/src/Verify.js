@@ -8,8 +8,8 @@ import * as paths from './paths';
 import * as verify from './verifyFunctions'
 let Eos = require('eosjs');
 
-const HTTP_STORAGE_API_ENDPOINT = 'http://10.20.6.109:4000/fuzzy/storage/';
-const HTTP_FUZZY_API_ENDPOINT = 'http://10.20.6.109:4000/fuzzy/';
+const HTTP_STORAGE_API_ENDPOINT = 'http://localhost:4000/fuzzy/storage/';
+const HTTP_FUZZY_API_ENDPOINT = 'http://localhost:4000/fuzzy/';
 
 export default class Scan extends Component {
   constructor(props) {
