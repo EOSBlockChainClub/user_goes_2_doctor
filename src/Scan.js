@@ -12,6 +12,7 @@ export default class Scan extends Component {
       result: 'No result',
       key: '',
       displayData: false,
+      killCamera: false,
       keys: []
     };
     this.handleScan = this.handleScan.bind(this);
@@ -24,6 +25,7 @@ export default class Scan extends Component {
       this.setState({
         result: data
       });
+      this.setState({killCamera:true});
       this.handleData(data);
     }
   }
@@ -58,12 +60,14 @@ export default class Scan extends Component {
   render() {
     return (
       <div>
+      {(!this.state.killCamera) &&
         <QrReader
           delay={this.state.delay}
           onError={this.handleError}
           onScan={this.handleScan}
           style={{ width: '100%' }}
         />
+      }
         {this.state.displayData &&
           this.state.keys.map(number => <li key={number}>{number}</li>)}
       </div>
