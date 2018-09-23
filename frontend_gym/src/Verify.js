@@ -8,8 +8,8 @@ import * as paths from './paths';
 import * as verify from './verifyFunctions'
 let Eos = require('eosjs');
 
-const HTTP_STORAGE_API_ENDPOINT = 'http://10.20.10.100:4000/fuzzy/storage/';
-const HTTP_FUZZY_API_ENDPOINT = 'http://10.20.10.100:4000/fuzzy/';
+const HTTP_STORAGE_API_ENDPOINT = 'http://10.20.6.109:4000/fuzzy/storage/';
+const HTTP_FUZZY_API_ENDPOINT = 'http://10.20.6.109:4000/fuzzy/';
 
 export default class Scan extends Component {
   constructor(props) {
@@ -57,9 +57,10 @@ export default class Scan extends Component {
       }
     });      
     
-    const responseStorage = await rawResponseStorage.text();
+    const responseStorage = await rawResponseStorage.json();
     console.log('handling storage ' + responseStorage);
-    const encryptedData = responseStorage.encryptedData;
+    this.setState({displayData:true, verifyResult:true, killCamera:true});
+    const encryptedData = responseStorage[0].encryptedData;
     const hash = ecc.sha256(encryptedData)
     const plainData = ecc.decrypt(claim.key, encryptedData);
     
@@ -75,12 +76,12 @@ export default class Scan extends Component {
     const responseFuzzy = await rawResponseFuzzy.json();
     if (responseFuzzy.user === useraccount) {
       if (verify.canGym(plainData)) {
-          this.setState({displayData:true, verifyResult:true});
+          this.setState({displayData:true, verifyResult:true, killCamera:true});
       } else {
-        this.setState({displayData:true, verifyResult:false});
+        this.setState({displayData:true, verifyResult:false, killCamera:true});
       }
     } else {
-      this.setState({displayError:true, error:Error("Invalid Data")});
+      this.setState({displayError:true, error:Error("Invalid Data"), killCamera:true});
     }
   }
 
@@ -105,7 +106,7 @@ export default class Scan extends Component {
         {this.state.killCamera && (
           <center>            
             {this.state.displayData && (
-              <div>Result: {this.state.verifyResult}</div>
+              <div>Result: {this.state.verifyResult.toString()}</div>
             )}
             {this.state.displayError && (
               <div>{this.state.error}</div>

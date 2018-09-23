@@ -5,8 +5,8 @@ let Eos = require('eosjs');
 const DOCTORS_KEY = '5K7mtrinTFrVTduSxizUc5hjXJEtTjVTsqSHeBHes1Viep86FP5';
 const DOCTORS_ACCOUNT_NAME = 'useraaaaaaaa';
 const CHAIN_ID = 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f';
-const HTTP_CHAIN_API_ENDPOINT = 'http://10.20.10.100:8888';
-const HTTP_STORAGE_API_ENDPOINT = 'http://10.20.10.100:4000/fuzzy/storage';
+const HTTP_CHAIN_API_ENDPOINT = 'http://localhost:8888';
+const HTTP_STORAGE_API_ENDPOINT = 'http://localhost:4000/fuzzy/storage';
 const CONTRACT = 'fuzzchainacc';
 
 function encrypt(key, input) {
@@ -69,9 +69,10 @@ export default class Publish extends Component {
     return <div>
     <center>
     {!this.state.showQRCode && (
-      Publishing encrypted data to the blockchain...)
+      <div>Publishing encrypted data to the blockchain...</div>)
+    }
     {this.state.showQRCode && (
-      <img src="images/qr-code.png"/>
+      <img width="200px" src="images/qr-code.png"/>
     )}
     </center>
     </div>;
