@@ -16,14 +16,6 @@ import DeriveData from './DeriveData';
 import Encrypt from './Encrypt';
 import WrappedLink from './WrappedLink';
 
-const Scan = () => (
-  <center>
-    <WrappedLink to={paths.ENCRYPT_PATH} label="Encrypt" raised primary>
-      Encrypt
-    </WrappedLink>
-  </center>
-);
-
 const Publish = () => (
   <center>Publishing encrypted data to the blockchain...</center>
 );
@@ -32,6 +24,10 @@ class App extends Component {
   state = {
     medicalInformation: { heartRate: 60, bloodPressure: 140, sugarLevel: 5.4 },
     masterPassword: null
+  };
+
+  onKeysExtracted = keys => {
+    console.log({ keys });
   };
 
   render() {
@@ -57,7 +53,7 @@ class App extends Component {
               <Route
                 exact
                 path={paths.SCAN_MASTER_PASSWORD_PATH}
-                component={Scan}
+                render={() => <Scan onKeysExtracted={this.onKeysExtracted} />}
               />
               <Route exact path={paths.ENCRYPT_PATH} component={Encrypt} />
               <Route exact path={paths.PUBLISH_PATH} component={Publish} />
