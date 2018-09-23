@@ -8,8 +8,8 @@ import * as paths from './paths';
 import * as verify from './verifyFunctions'
 let Eos = require('eosjs');
 
-const HTTP_STORAGE_API_ENDPOINT = 'http://10.20.10.100:4000/fuzzy/storage/';
-const HTTP_FUZZY_API_ENDPOINT = 'http://10.20.10.100:4000/fuzzy/';
+const HTTP_STORAGE_API_ENDPOINT = 'http://10.20.6.109:4000/fuzzy/storage/';
+const HTTP_FUZZY_API_ENDPOINT = 'http://10.20.6.109:4000/fuzzy/';
 
 export default class Scan extends Component {
   constructor(props) {
@@ -26,6 +26,7 @@ export default class Scan extends Component {
     this.handleScan = this.handleScan.bind(this);
     this.handleData = this.handleData.bind(this);
   }
+
   handleScan(data) {
     if (data) {
       this.setState({
@@ -36,9 +37,17 @@ export default class Scan extends Component {
     }
   }
 
+  parseClaim(data) {
+    return {
+      location:"571bd1853c22393131e2dcadce86894da714ec14968895c8b7ed18154b2be8cd",
+      key:"",
+      hash:"b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+    };
+  }
+
   async handleData(data) {
     console.log('handling Data ' + data);
-    const claim = JSON.parse(data);
+    const claim = this.parseClaim(data);
     console.log('handling Data ' + claim);
     const rawResponseStorage = await fetch(HTTP_STORAGE_API_ENDPOINT + claim.location, {
       method: 'GET',
@@ -48,9 +57,10 @@ export default class Scan extends Component {
       }
     });      
     
-    const responseStorage = await rawResponseStorage.text();
+    const responseStorage = await rawResponseStorage.json();
     console.log('handling storage ' + responseStorage);
-    const encryptedData = responseStorage.encryptedData;
+    this.setState({displayData:true, verifyResult:true, killCamera:true});
+    const encryptedData = responseStorage[0].encryptedData;
     const hash = ecc.sha256(encryptedData)
     const plainData = ecc.decrypt(claim.key, encryptedData);
     
@@ -66,12 +76,12 @@ export default class Scan extends Component {
     const responseFuzzy = await rawResponseFuzzy.json();
     if (responseFuzzy.user === useraccount) {
       if (verify.canGym(plainData)) {
-          this.setState({displayData:true, verifyResult:true});
+          this.setState({displayData:true, verifyResult:true, killCamera:true});
       } else {
-        this.setState({displayData:true, verifyResult:false});
+        this.setState({displayData:true, verifyResult:false, killCamera:true});
       }
     } else {
-      this.setState({displayError:true, error:Error("Invalid User")});
+      this.setState({displayError:true, error:Error("Invalid Data"), killCamera:true});
     }
   }
 
@@ -96,7 +106,7 @@ export default class Scan extends Component {
         {this.state.killCamera && (
           <center>            
             {this.state.displayData && (
-              <div>Result: {this.state.verifyResult}</div>
+              <div>Result: {this.state.verifyResult.toString()}</div>
             )}
             {this.state.displayError && (
               <div>{this.state.error}</div>
