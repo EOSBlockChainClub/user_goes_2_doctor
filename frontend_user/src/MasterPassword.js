@@ -12,11 +12,12 @@ class MasterPassword extends React.Component {
     return (
       <div>
         <center>Retrieve Data</center>
-        <b>Dr. House</b>
-        <div>
-          {this.props.masterSecret}
+        <center><b>Dr. House</b></center>
+        <div>        
+          <center>{this.props.masterSecret}          
           <br />
           <img width="80%" src="images/mastersecret.png" />
+          </center>
         </div>
         <center>
           <div style={{ marginTop: 20 }}>

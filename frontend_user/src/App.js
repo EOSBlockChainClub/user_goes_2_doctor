@@ -25,8 +25,6 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <Router>
           <div className="App">
-            <Header />
-
             <div>
               <Route
                 exact

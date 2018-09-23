@@ -39,7 +39,8 @@ class ScanVerifyClaim extends React.Component {
   render() {
     return (
       <div>
-        <center>Provide Data</center>      
+        <div style={{ marginBottom: 20, marginTop: 20, textAlign:"center"}} >Provide Data</div>      
+
         {!this.state.killCamera && (
             <QrReader
               delay={this.state.delay}
@@ -50,20 +51,24 @@ class ScanVerifyClaim extends React.Component {
           )}
 
         {this.state.killCamera && (
-            <div><b>MyGym</b> wants to know whether you are healthy<br/></div>
+            <div>
+              <center><b>MyGym</b> wants to know <br/>whether you are healthy<br/></center>
+            </div>
         )}
 
         <center>
+        <div style={{ marginBottom: 20, marginTop: 20 }}>
           {this.state.killCamera && (
           <WrappedLink
           to={paths.PROVIDE_CLAIM_PATH}
-          label="Provide Data"
+          label="Release Data"
           raised
           primary
         >
-          Provide Data
+          Release Data
         </WrappedLink>  
           )}
+          </div>
           <WrappedLink
             to={paths.WELCOME_PATH}
             label="Back"
