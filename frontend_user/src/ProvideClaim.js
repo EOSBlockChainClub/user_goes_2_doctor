@@ -48,7 +48,7 @@ class ProvideClaim extends React.Component {
           </div>      
               
           {this.state.displayData && 
-          this.renderQrCode(this.state.keys[this.props.informationRequest], this.props.claims[this.props.informationRequest])
+          (<center>{this.renderQrCode(this.state.keys[this.props.informationRequest], this.props.claims[this.props.informationRequest])}</center>)
           }
         <center>
           <WrappedLink

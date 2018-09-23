@@ -5,8 +5,7 @@ import './Header.css';
 
 class Header extends React.Component {
   render() {
-    return (
-      <div className="header_container">
+    return (<div className="header_container">
       <center>Joe</center>
         <ul className="header_progressbar">
           <li
@@ -16,7 +15,7 @@ class Header extends React.Component {
                 : ''
             }
           >
-            Welcome
+            Start
           </li>
           <li
             className={

@@ -9,12 +9,9 @@ class MasterPassword extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <div>Retrieve Data</div>      
-        
-        Dr. House
-
+    return (<div>
+        <center>Retrieve Data</center>
+        <b>Dr. House</b>
         <div>
           {this.props.masterSecret}<br/>
           <img width="80%" src="images/mastersecret.png"/>

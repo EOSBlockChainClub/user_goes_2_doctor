@@ -14,7 +14,7 @@ class ScanVerifyClaim extends React.Component {
       result: 'No result',
       key: '',
       displayData: false,
-      killCamera: false,
+      killCamera: true,
       keys: []
     };
     this.handleScan = this.handleScan.bind(this);
@@ -39,7 +39,7 @@ class ScanVerifyClaim extends React.Component {
   render() {
     return (
       <div>
-        <div>Provide Data</div>      
+        <center>Provide Data</center>      
         {!this.state.killCamera && (
             <QrReader
               delay={this.state.delay}
@@ -50,8 +50,9 @@ class ScanVerifyClaim extends React.Component {
           )}
 
         {this.state.killCamera && (
-            <div>MyGym wants to know whether you are healthy</div>
+            <div><b>MyGym</b> wants to know whether you are healthy<br/></div>
         )}
+
         <center>
           {this.state.killCamera && (
           <WrappedLink

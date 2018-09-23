@@ -1,6 +1,6 @@
 .header_container {
   width: 100%;
-  margin: 100px auto;
+  margin: 20px auto;
 }
 .header_progressbar {
   counter-reset: step;
