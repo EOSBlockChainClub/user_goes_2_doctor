@@ -13,9 +13,11 @@ import * as paths from './paths';
 import Welcome from './Welcome';
 import MasterPassword from './MasterPassword';
 import ScanVerifyClaim from './ScanVerifyClaim';
+import ProvideClaim from './ProvideClaim'
 
 class App extends Component {
   state = {
+    claims : []
   };
 
   render() {
@@ -36,12 +38,22 @@ class App extends Component {
               <Route
                 exact
                 path={paths.MASTER_PASSWORD_PATH}
-                render={() => <MasterPassword />}
+                render={() => <MasterPassword masterSecret="This is very secret" 
+                onClaimsReceived={this.onClaimsReceived}
+                />}
               />
               <Route
                 exact
                 path={paths.SCAN_VERIFY_REQUEST_PATH}
                 render={() => <ScanVerifyClaim onRequestExtracted={this.onRequestExtracted} />}
+              />              
+              <Route
+                exact
+                path={paths.PROVIDE_CLAIM_PATH}
+                render={() => <ProvideClaim masterSecret="This is very secret"
+                claims={this.state.claims}
+                informationRequest={2}
+                />}
               />              
             </div>
           </div>

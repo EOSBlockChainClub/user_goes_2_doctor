@@ -12,7 +12,7 @@ class InformationRequest extends React.Component {
         <div>
         Is the subject in good condition to exercise?            
         </div>
-        
+        <img src="images/qr-code.png"/>
         <center>
           <WrappedLink
             to={paths.VERIFY_PATH}

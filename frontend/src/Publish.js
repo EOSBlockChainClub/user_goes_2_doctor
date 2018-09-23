@@ -49,9 +49,13 @@ export default class Publish extends Component {
 
       eos
         .contract(CONTRACT)
-        .then(myaccount =>
-          myaccount.publishdata(DOCTORS_ACCOUNT_NAME, hash, locationStorage)
-        );
+        .then(myaccount => {
+          const result = myaccount.publishdata(DOCTORS_ACCOUNT_NAME, hash, locationStorage);
+          result.then((r) => {
+            console.log(r)
+          })
+         
+        });
     })();
   }
 

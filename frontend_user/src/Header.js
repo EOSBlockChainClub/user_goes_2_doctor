@@ -33,8 +33,17 @@ class Header extends React.Component {
                 : ''
             }
           >
-            Provide<br />data
-          </li>          
+            Read<br />request
+          </li>    
+          <li
+            className={
+              paths.PROVIDE_CLAIM_PATH === this.props.location.pathname
+                ? 'header_active'
+                : ''              
+            }      
+          > Provide<br />
+             Data
+          </li>
         </ul>
       </div>
     );
