@@ -1,0 +1,10 @@
+.MainMenuWrapper {
+  display: flex;
+  justify-content: center;
+}
+.MainMenuWrapper button {
+  margin-left: 1em;
+}
+.MainMenuWrapper button:first-of-type {
+  margin-left: 0;
+}
