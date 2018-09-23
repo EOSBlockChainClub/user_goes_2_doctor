@@ -10,6 +10,11 @@ class MedicalInformation extends React.Component {
           <li>Heart Rate: {this.props.heartRate} b.p.s.</li>
           <li>Blood Pressure: {this.props.bloodPressure} nmHg</li>
           <li>Sugar Level: {this.props.bloodPressure} mmol/L</li>
+          <li>Sodium: {this.props.sodium} mmol/L</li>
+          <li>Ionized calcium (Ca): {this.props.ionizedCalcium} mmol/L</li>
+          <li>Transferrin: {this.props.transferrin} μmol/L</li>
+          <li>Ferritin: {this.props.ferritin} pmol/L</li>
+          <li>Cholesterol: {this.props.ferritin} mg/dL</li>
         </ul>
         <center>
           <WrappedLink

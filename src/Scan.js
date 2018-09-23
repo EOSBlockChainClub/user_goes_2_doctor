@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import QrReader from 'react-qr-reader';
 import ecc from 'eosjs-ecc';
+import WrappedLink from './WrappedLink';
+import * as paths from './paths';
 
 export default class Scan extends Component {
   constructor(props) {
@@ -25,7 +27,7 @@ export default class Scan extends Component {
       this.setState({
         result: data
       });
-      this.setState({killCamera:true});
+      this.setState({ killCamera: true });
       this.handleData(data);
     }
   }
@@ -44,7 +46,7 @@ export default class Scan extends Component {
   generateSequence(secret) {
     console.log('generating Sequence');
     var stuff = secret;
-    for (var x = 0; x < 10; x++) {
+    for (var x = 0; x < 5; x++) {
       stuff = ecc.sha256(stuff);
       var pubkey = this.generatePubKey(stuff);
       this.state.keys.push(pubkey);
@@ -60,16 +62,27 @@ export default class Scan extends Component {
   render() {
     return (
       <div>
-      {(!this.state.killCamera) &&
-        <QrReader
-          delay={this.state.delay}
-          onError={this.handleError}
-          onScan={this.handleScan}
-          style={{ width: '100%' }}
-        />
-      }
-        {this.state.displayData &&
-          this.state.keys.map(number => <li key={number}>{number}</li>)}
+        <div>
+          {!this.state.killCamera && (
+            <QrReader
+              delay={this.state.delay}
+              onError={this.handleError}
+              onScan={this.handleScan}
+              style={{ width: '100%' }}
+            />
+          )}
+          {this.state.displayData && <p>Deterministic password derivation:</p>}
+          {this.state.displayData &&
+            this.state.keys.map(number => <li key={number}>{number}</li>)}
+        </div>
+        {this.state.killCamera && (
+          <center>
+            <br />
+            <WrappedLink to={paths.ENCRYPT_PATH} label="Encrypt" raised primary>
+              Encrypt
+            </WrappedLink>
+          </center>
+        )}
       </div>
     );
   }
