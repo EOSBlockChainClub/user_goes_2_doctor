@@ -9,22 +9,21 @@ class MasterPassword extends React.Component {
   }
 
   render() {
-    return (<div>
+    return (
+      <div>
         <center>Retrieve Data</center>
         <b>Dr. House</b>
         <div>
-          {this.props.masterSecret}<br/>
-          <img width="80%" src="images/mastersecret.png"/>
+          {this.props.masterSecret}
+          <br />
+          <img width="80%" src="images/mastersecret.png" />
         </div>
         <center>
-          <WrappedLink
-            to={paths.WELCOME_PATH}
-            label="Back"
-            raised
-            primary
-          >
-            Back
-          </WrappedLink>
+          <div style={{ marginTop: 20 }}>
+            <WrappedLink to={paths.WELCOME_PATH} label="Back" raised primary>
+              Back
+            </WrappedLink>
+          </div>
         </center>
       </div>
     );

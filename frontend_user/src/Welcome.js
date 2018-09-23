@@ -7,17 +7,19 @@ class Welcome extends React.Component {
   render() {
     return (
       <div>
-        <div>Your Data Manager</div>      
-        
+        <div>Your Data Manager</div>
+
         <center>
-          <WrappedLink
-            to={paths.MASTER_PASSWORD_PATH}
-            label="Retrieve Data"
-            raised
-            primary
-          >
-            Retrieve Data
-          </WrappedLink>
+          <div style={{ marginBottom: 20, marginTop: 20 }}>
+            <WrappedLink
+              to={paths.MASTER_PASSWORD_PATH}
+              label="Retrieve Data"
+              raised
+              primary
+            >
+              Retrieve Data
+            </WrappedLink>
+          </div>
           <WrappedLink
             to={paths.SCAN_VERIFY_REQUEST_PATH}
             label="Provide Data"
