@@ -63,20 +63,26 @@ export default class Scan extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div style={{textAlign: 'center'}}>
           {!this.state.killCamera && (
-            <div style={{margin: '0 auto', width: 400}}>
-            <QrReader
-              delay={this.state.delay}
-              onError={this.handleError}
-              onScan={this.handleScan}
-              style={{ width: '100%' }}
-            />
-          </div>
+            <div style={{ margin: '0 auto', width: 600 }}>
+              <QrReader
+                delay={this.state.delay}
+                onError={this.handleError}
+                onScan={this.handleScan}
+                style={{ width: '100%' }}
+              />
+            </div>
           )}
-          {this.state.displayData && <p>Deterministic password derivation:</p>}
-          {this.state.displayData &&
-            this.state.keys.map(number => <li key={number}>{number}</li>)}
+          {this.state.displayData && (
+            <div style={{ marginBottom: 20, fontSize: 20 }}>
+              Generating deterministically passwords for each piece of derived data...
+            </div>
+          )}
+          <div style={{ fontSize: 9 }}>
+            {this.state.displayData &&
+              this.state.keys.map(number => <li key={number}>{number}</li>)}
+          </div>
         </div>
         {this.state.killCamera && (
           <center>
