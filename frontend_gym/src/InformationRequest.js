@@ -8,9 +8,9 @@ class InformationRequest extends React.Component {
   render() {
     //<img src="images/qr-code.png" />
     return (
-      <div>
+      <div style={{textAlign: 'center'}}>
         <div>YourGym needs certificate for</div>
-        <div>
+        <div style={{marginBottom: 50}}>
           <h2>Is the subject in good condition to exercise?</h2>
         </div>
         <center>
