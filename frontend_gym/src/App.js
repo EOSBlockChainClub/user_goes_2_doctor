@@ -13,6 +13,9 @@ import * as paths from './paths';
 
 import InformationRequest from './InformationRequest';
 import Verify from './Verify';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 class App extends Component {
   state = {
@@ -29,7 +32,13 @@ class App extends Component {
         <Router>
           <div className="App">
             <Header />
-
+            <AppBar>
+              <Toolbar>
+                <Typography variant="title" color="inherit">
+                  EOS ID
+                </Typography>
+              </Toolbar>
+            </AppBar>
             <div>
               <Route
                 exact

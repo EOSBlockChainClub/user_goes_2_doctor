@@ -15,6 +15,9 @@ import MasterPassword from './MasterPassword';
 import ScanVerifyClaim from './ScanVerifyClaim';
 import ProvideClaim from './ProvideClaim'
 import ScanLocation from './ScanLocation'
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 class App extends Component {
   state = {
@@ -31,6 +34,13 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <Router>
           <div className="App">
+          <AppBar>
+            <Toolbar>
+              <Typography variant="title" color="inherit">
+                EOS ID
+              </Typography>
+            </Toolbar>
+          </AppBar>
             <div>
               <Route
                 exact
@@ -42,7 +52,7 @@ class App extends Component {
               <Route
                 exact
                 path={paths.MASTER_PASSWORD_PATH}
-                render={() => <MasterPassword masterSecret="This is very secret"                 
+                render={() => <MasterPassword masterSecret="This is very secret"
                 />}
               />
               <Route
@@ -54,7 +64,7 @@ class App extends Component {
                 exact
                 path={paths.SCAN_VERIFY_REQUEST_PATH}
                 render={() => <ScanVerifyClaim />}
-              />              
+              />
               <Route
                 exact
                 path={paths.PROVIDE_CLAIM_PATH}
@@ -62,7 +72,7 @@ class App extends Component {
                 claims={this.state.claims}
                 informationRequest={2}
                 />}
-              />              
+              />
             </div>
           </div>
         </Router>

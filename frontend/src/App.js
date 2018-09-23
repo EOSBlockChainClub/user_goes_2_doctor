@@ -15,6 +15,9 @@ import MedicalInformation from './MedicalInformation';
 import DeriveData from './DeriveData';
 import Encrypt from './Encrypt';
 import Publish from './Publish';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 class App extends Component {
   state = {
@@ -42,6 +45,13 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <Router>
           <div className="App">
+          <AppBar>
+            <Toolbar>
+              <Typography variant="title" color="inherit">
+                EOS ID
+              </Typography>
+            </Toolbar>
+          </AppBar>
             <Header />
 
             <div>
