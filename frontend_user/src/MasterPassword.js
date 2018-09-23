@@ -21,6 +21,12 @@ class MasterPassword extends React.Component {
         </div>
         <center>
           <div style={{ marginTop: 20 }}>
+          <WrappedLink to={paths.SCAN_LOCATION_PATH} label="Get Location" raised primary>
+              Get Location
+            </WrappedLink>
+            </div>
+            <br/>
+            <div>
             <WrappedLink to={paths.WELCOME_PATH} label="Back" raised primary>
               Back
             </WrappedLink>
