@@ -7,7 +7,7 @@ class Welcome extends React.Component {
   render() {
     return (
       <div>
-        <div>Your Data Manager</div>      
+        <center>Your Data Manager</center>      
         
         <center>
           <WrappedLink
@@ -18,6 +18,7 @@ class Welcome extends React.Component {
           >
             Retrieve Data
           </WrappedLink>
+          <br/>
           <WrappedLink
             to={paths.SCAN_VERIFY_REQUEST_PATH}
             label="Provide Data"
