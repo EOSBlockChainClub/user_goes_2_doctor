@@ -1,4 +1,4 @@
-Fuzy project
+Fuzi project
 
 EOS Hackathon London 2018
 
