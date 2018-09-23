@@ -35,7 +35,7 @@ class App extends Component {
             <AppBar>
               <Toolbar>
                 <Typography variant="title" color="inherit">
-                  EOS ID
+                  Fuzi - Gym
                 </Typography>
               </Toolbar>
             </AppBar>
