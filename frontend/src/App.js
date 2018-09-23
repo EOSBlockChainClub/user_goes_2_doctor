@@ -48,7 +48,7 @@ class App extends Component {
           <AppBar>
             <Toolbar>
               <Typography variant="title" color="inherit">
-                Fuzi - Dr. House
+                Fuzi - Dr. House [ Authority ]
               </Typography>
             </Toolbar>
           </AppBar>

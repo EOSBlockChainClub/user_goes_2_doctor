@@ -35,7 +35,7 @@ class App extends Component {
             <AppBar>
               <Toolbar>
                 <Typography variant="title" color="inherit">
-                  Fuzi - Gym
+                  Fuzi - Gym [ Service provider ]
                 </Typography>
               </Toolbar>
             </AppBar>
