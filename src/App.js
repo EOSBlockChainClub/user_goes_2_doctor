@@ -48,7 +48,7 @@ class App extends Component {
             <AppBar>
               <Toolbar>
                 <Typography variant="title" color="inherit">
-                  EOS ID Certification
+                  EOS ID
                 </Typography>
               </Toolbar>
             </AppBar>
