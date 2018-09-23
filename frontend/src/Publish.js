@@ -28,8 +28,6 @@ export default class Publish extends Component {
       authorization: DOCTORS_ACCOUNT_NAME + '@active'
     });
 
-    console.log('Publish', { props: this.props });
-
     const encryptedGym = encrypt(
       this.props.keys
         ? this.props.keys[1]
